@@ -12,7 +12,11 @@ var tests = []struct {
 }{
 	{"ABCABC", "ABC", "ABC"},
 	{"ABABAB", "ABAB", "AB"},
+	{"AABABAB", "ABAB", ""},
+	{"AABABAABAB", "AABAB", "AABAB"},
 	{"LEET", "CODE", ""},
+	{"AAAAAAAAAAAA", "A", "A"},
+	{"TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXX"},
 }
 
 func TestGcdOfStrings(t *testing.T) {
