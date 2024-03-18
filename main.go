@@ -9,6 +9,7 @@ func main() {
 	fmt.Println("the output is", gcdOfStrings("AABABAB", "ABAB"))
 }
 
+// naive approach
 func gcdOfStrings(str1 string, str2 string) string {
 	len1 := len(str1)
 	len2 := len(str2)
@@ -49,4 +50,21 @@ func gcdOfStrings(str1 string, str2 string) string {
 	}
 
 	return ""
+}
+
+// from fastest solution in leetcode submissions - using recursion
+func gcdOfStrings2(str1 string, str2 string) string {
+	if str1+str2 != str2+str1 {
+		return ""
+	}
+
+	if len(str1) == len(str2) {
+		return str1
+	}
+
+	if len(str1) > len(str2) {
+		return gcdOfStrings2(str1[len(str2):], str2)
+	}
+
+	return gcdOfStrings2(str1, str2[len(str1):])
 }

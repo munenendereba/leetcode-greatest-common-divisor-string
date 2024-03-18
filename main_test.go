@@ -33,3 +33,30 @@ func TestGcdOfStrings(t *testing.T) {
 	}
 
 }
+
+func TestGcdOfStrings2(t *testing.T) {
+	for i, test := range tests {
+		testname := fmt.Sprintf("running test %d", i)
+
+		t.Run(testname, func(t *testing.T) {
+			div := gcdOfStrings2(test.string1, test.string2)
+
+			if div != test.divisor {
+				t.Errorf("gcdOfStrings2(%s,%s) expected %s but got %s", test.string1, test.string2, test.divisor, div)
+			}
+		})
+	}
+
+}
+
+func BenchmarkGcdOfStrings(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		gcdOfStrings("AABABAB", "ABAB")
+	}
+}
+
+func BenchmarkGcdOfStrings2(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		gcdOfStrings2("AABABAB", "ABAB")
+	}
+}
